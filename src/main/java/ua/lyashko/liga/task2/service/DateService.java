@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
-public class DateServiceNew {
+public class DateService {
 
     @Value("${mark.pattern}")
     private String markPattern;
