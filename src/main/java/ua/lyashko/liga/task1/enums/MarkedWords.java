@@ -1,0 +1,32 @@
+package ua.lyashko.liga.task1.enums;
+
+public enum MarkedWords {
+    HONOUR,
+    JUDGE,
+    DEPUTY,
+    UPPER,
+    TRIBUNAL,
+    OF,
+    COUNSEL,
+    JUSTICE,
+    QC,
+    DBE,
+    MASTER,
+    THE,
+    DECEASED,
+    HON,
+    UTJ,
+    ESQ,
+    EXCELLENCY,
+    DR,
+    PROFESSOR,
+    KC,
+    CI,
+    CHANCELLOR,
+    VICE,
+    PRESIDENT,
+    COURT,
+    CIVIL,
+    DIVISION,
+    APPEAL
+}
