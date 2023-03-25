@@ -6,12 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ua.lyashko.liga.task2.service.DateServiceNew;
+import ua.lyashko.liga.task2.service.DateService;
 
 @RestController
 @RequiredArgsConstructor
 public class DateController {
-    private final DateServiceNew dateService;
+    private final DateService dateService;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @RequestMapping("/date")
