@@ -1,4 +1,4 @@
-package ua.lyashko.liga.configuration;
+package ua.lyashko.liga.config;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfiguration {
 
     private static final String TITLE = "Liga Zakon test";
-    private static final String DESCRIPTION = "Service for extract any data";
+    private static final String DESCRIPTION = "Service for extract required data from file";
     private static final String VERSION = "0.0.1-SNAPSHOT";
 
     @Bean
