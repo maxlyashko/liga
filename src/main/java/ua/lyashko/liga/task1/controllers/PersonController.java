@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.lyashko.liga.task1.model.Person;
 import ua.lyashko.liga.task1.service.PersonService;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class PersonController {
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @RequestMapping("/person")
     @Operation(description = "An endpoint to extract list of persons from file")
-    public List<Person> getPeople ( MultipartFile file ) {
+    public List<Person> getPeople ( MultipartFile file ) throws IOException {
         return personService.getPersonList ( file );
     }
 }
