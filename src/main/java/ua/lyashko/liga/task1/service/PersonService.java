@@ -108,30 +108,43 @@ public class PersonService {
         }
     }
 
-    private void fillName ( Person person , String str , List<String> list , JSONObject json ) {
+    private void isNameOnFirstPlace ( Person person , String str , List<String> list ) {
+        person.setName ( str );
+        person.setSurname ( list.get ( 1 ) );
+    }
+
+    private void isNameOnSecondPlace ( Person person , String str , List<String> list ) {
+        person.setName ( str );
+        person.setSurname ( list.get ( 0 ) );
+    }
+
+    private void isNameInBigSentence ( Person person , String str , List<String> list ) {
+        person.setName ( str );
+        String nextWord = ( list.get ( list.indexOf ( str ) + 1 ) );
+        String tempSurname = "";
+        if (person.getSurname ( ) != null) {
+            tempSurname = person.getSurname ( );
+        } else {
+            person.setSurname ( nextWord );
+        }
+        while ( isAffix ( nextWord ) ) {
+            person.setSurname ( tempSurname + " " + nextWord );
+            nextWord = list.get ( list.indexOf ( nextWord ) + 1 );
+            tempSurname = person.getSurname ( );
+        }
+        if (person.getSurname ( ) != null) {
+            person.setSurname ( tempSurname + " " + nextWord );
+        }
+    }
+
+
+    private void fillName ( Person person , String str , List<String> list ) {
         if (list.size ( ) == 2 && list.indexOf ( str ) == 0) {
-            person.setName ( str );
-            person.setSurname ( list.get ( 1 ) );
+            isNameOnFirstPlace ( person , str , list );
         } else if (list.size ( ) == 2 && list.indexOf ( str ) == 1) {
-            person.setName ( str );
-            person.setSurname ( list.get ( 0 ) );
+            isNameOnSecondPlace ( person , str , list );
         } else if (list.indexOf ( str ) + 1 < list.size ( )) {
-            person.setName ( str );
-            String nextWord = ( list.get ( list.indexOf ( str ) + 1 ) );
-            String tempSurname = "";
-            if (person.getSurname ( ) != null) {
-                tempSurname = person.getSurname ( );
-            } else {
-                person.setSurname ( nextWord );
-            }
-            while ( isAffix ( nextWord ) ) {
-                person.setSurname ( tempSurname + " " + nextWord );
-                nextWord = list.get ( list.indexOf ( nextWord ) + 1 );
-                tempSurname = person.getSurname ( );
-            }
-            if (person.getSurname ( ) != null) {
-                person.setSurname ( tempSurname + " " + nextWord );
-            }
+            isNameInBigSentence ( person , str , list );
         }
     }
 
@@ -159,7 +172,7 @@ public class PersonService {
             if (isName ( str , json )
                     && !str.equals ( person.getPersonType ( ) )
                     && !str.equals ( person.getSurname ( ) )) {
-                fillName ( person , str , list , json );
+                fillName ( person , str , list );
                 break;
             }
             fillSurname ( person , str );
